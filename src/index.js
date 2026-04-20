@@ -4,7 +4,7 @@ const connectDB = require('./api/core/db');
 
 const app = express();
 
-// Jalankan koneksi database
+
 connectDB();
 
 app.use(express.json());
