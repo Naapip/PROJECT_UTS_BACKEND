@@ -1,6 +1,10 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-const uri = "mongodb+srv://yumna535230179_db_user:xdpf5V27quZ39fAg@cluster0.pblperr.mongodb.net/Thereads_Apps?retryWrites=true&w=majority&appName=Cluster0";
+// const uri = "mongodb+srv://yumna535230179_db_user:xdpf5V27quZ39fAg@cluster0.pblperr.mongodb.net/Thereads_Apps?retryWrites=true&w=majority&appName=Cluster0";
+//const uri = "mongodb+srv://yumna535230179_db_user:xdpf5V27quZ39fAg@cluster0.pblperr.mongodb.net/Thereads_Apps?retryWrites=true&w=majority";
+//const uri1 = "mongodb://yumna535230179_db_user:xdpf5V27quZ39fAg@ac-oo73sq4-shard-00-00.pblperr.mongodb.net:27017,ac-oo73sq4-shard-00-01.pblperr.mongodb.net:27017,ac-oo73sq4-shard-00-02.pblperr.mongodb.net:27017/?ssl=true&replicaSet=atlas-wctra4-shard-0&authSource=admin&appName=Cluster0"
+
+const uri = "mongodb://yumna535230179_db_user:xdpf5V27quZ39fAg@ac-oo73sq4-shard-00-00.pblperr.mongodb.net:27017,ac-oo73sq4-shard-00-01.pblperr.mongodb.net:27017,ac-oo73sq4-shard-00-02.pblperr.mongodb.net:27017/?ssl=true&replicaSet=atlas-wctra4-shard-0&authSource=admin&appName=Cluster0";
 
 const client = new MongoClient(uri, {
   serverApi: {

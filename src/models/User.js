@@ -36,21 +36,21 @@ class User {
   }
 
   async updateProfile(userId, updateData) {
-    const update = {
-      $set: {
-        ...updateData,
-        updatedAt: new Date()
-      }
-    };
+  const update = {
+    $set: {
+      ...updateData,
+      updatedAt: new Date()
+    }
+  };
 
-    const result = await this.collection.findOneAndUpdate(
-      { _id: new ObjectId(userId) },
-      update,
-      { returnDocument: 'after' }
-    );
+  const result = await this.collection.findOneAndUpdate(
+    { _id: new ObjectId(userId) },
+    update,
+    { returnDocument: 'after' }
+  );
 
-    return result.value;
-  }
+  return result; 
+}
 
   async comparePassword(plainPassword, hashedPassword) {
     return await bcrypt.compare(plainPassword, hashedPassword);
