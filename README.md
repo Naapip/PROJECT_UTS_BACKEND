@@ -1,0 +1,74 @@
+# 🚀 Social Media API - UTS Pemrograman Backend
+
+---
+
+## 👥 Anggota Kelompok & Pembagian Tugas
+
+### 1. Yumna (Autentikasi & Manajemen User)
+**Endpoint Prefix:** `/api/auth` & `/api/users`
+* **Register & Login**: Implementasi pendaftaran pengguna dan masuk sistem menggunakan JWT (JSON Web Token).
+* **User Profile**: Menampilkan profil pengguna beserta thread yang telah dibuat.
+* **Update Profile**: Fitur untuk memperbarui informasi profil seperti foto dan privasi akun.
+
+### 2. Oscar (Manajemen Thread Utama)
+**Endpoint Prefix:** `/api/threads`
+* **Create Thread**: Membuat postingan utama (mendukung upload gambar menggunakan Multer).
+* **Global Feed**: Menampilkan semua thread utama di halaman depan.
+* **Get Thread by ID**: Mengambil detail satu thread spesifik.
+* **Delete Thread**: Menghapus postingan utama milik sendiri.
+
+### 3. Naufal Afif (Nested Replies & Advanced Logic)
+**Endpoint Prefix:** `/api/threads` (Sub-routes & Logic)
+* **Nested Reply System**: Fitur membalas thread dengan penyimpanan referensi `parentThreadId` dan update array `replies` pada dokumen induk.
+* **Edit Content Logic**: Implementasi fitur edit postingan dengan batasan waktu maksimal 5 menit setelah pembuatan.
+* **Reply Cleanup**: Logika penghapusan balasan yang secara otomatis membersihkan ID referensi pada thread induk menggunakan operator `$pull`.
+* **User Replies Feed**: Menampilkan daftar semua balasan yang pernah dibuat oleh user tertentu.
+
+---
+
+## 🛠️ Detail Endpoint API
+
+### Autentikasi (Yumna)
+| Method | Endpoint             | Deskripsi |
+| :---   | :---                 | :--- |
+| `POST` | `/api/auth/register` | Mendaftarkan pengguna baru |
+| `POST` | `/api/auth/login`    | Autentikasi user & generate token |
+
+### Manajemen User (Yumna)
+| Method | Endpoint               | Deskripsi |
+| :---   | :---                   | :--- |
+| `GET`  | `/api/users/:username` | Melihat profil & thread user |
+| `PUT`  | `/api/users/update`    | Update data profil (Auth required) |
+
+### Thread Utama (Oscar)
+| Method   | Endpoint           | Deskripsi |
+| :---     | :---               | :--- |
+| `GET`    | `/api/threads`     | Mengambil semua thread utama (Feed) |
+| `POST`   | `/api/threads`     | Membuat thread baru (Support Image) |
+| `DELETE` | `/api/threads/:id` | Menghapus thread utama |
+| `GET`    | `/api/threads/:id` | Mengambil semua thread berdasarkan Id |
+
+### Balasan & Fitur Tambahan (Naufal)
+| Method   | Endpoint                            | Deskripsi |
+| :---     | :---                                | :--- |
+| `POST`   | `/api/threads/:id/reply`            | Membalas thread/postingan |
+| `PATCH`  | `/api/threads/:id`                  | Edit konten (Limit 5 menit) |
+| `DELETE` | `/api/threads/replies/:id`          | Hapus reply & cleanup referensi |
+| `GET`    | `/api/threads/replies/user/:userId` | Daftar balasan milik user |
+
+---
+
+## 📁 Arsitektur Kode
+Proyek ini menggunakan struktur folder berbasis komponen untuk memastikan kode terorganisir:
+* `src/api/components/`: Berisi logika bisnis yang dipisah per entitas (Users, Threads).
+* `src/core/`: Berisi konfigurasi inti (Database, Express App).
+* `src/models/`: Definisi skema MongoDB Native.
+* `src/middleware/`: Middleware untuk validasi JWT.
+
+---
+
+## ⚙️ Instalasi
+1. Clone repository ini.
+2. Jalankan `npm install`.
+3. Buat file `.env` dan isi `MONGODB_URI` serta `JWT_SECRET` dari isi `.env.example`.
+4. Jalankan aplikasi dengan `npm start`.
