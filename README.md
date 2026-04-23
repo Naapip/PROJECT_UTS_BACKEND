@@ -24,6 +24,13 @@
 * **Reply Cleanup**: Logika penghapusan balasan yang secara otomatis membersihkan ID referensi pada thread induk menggunakan operator `$pull`.
 * **User Replies Feed**: Menampilkan daftar semua balasan yang pernah dibuat oleh user tertentu.
 
+### 4. Gading Sihol (Search & Relationship)
+**Endpoint Prefix:** `/api/search`
+* **Fitur Search**: Fitur untuk Mencari akun dengan memfilter database dan mengembalikan daftar profil yang cocok dengan string yang dimasukkan, baik berdasarkan username.
+* **Fitur Search Threads**: Fitur untuk mencari kata kunci ternteu di dalam judul atau isi postingan (thread).
+* **Fitur Social Graph**: Fitur untuk menampilkan siapa saja yang diikuti oleh user tertentu.
+* **Fitur Social Graph2**: Fitur untuk menampilkan daftar pengikut.
+
 ---
 
 ## 🛠️ Detail Endpoint API
@@ -55,6 +62,15 @@
 | `PATCH`  | `/api/threads/:id`                  | Edit konten (Limit 5 menit) |
 | `DELETE` | `/api/threads/replies/:id`          | Hapus reply & cleanup referensi |
 | `GET`    | `/api/threads/replies/user/:userId` | Daftar balasan milik user |
+
+### Search * Relationship (Gading)
+| Method   | Endpoint                            | Deskripsi |
+| :---     | :---                                | :--- |
+| `GET`    | `/api/search/users?q=`              | Mencari user berdasrkan username atau nama |
+| `GET`    | `/api/search/threads?q=`            | Mencari thread berdasarkan kata kunci |
+| `GET`    | `/api/users/:id/following`          | Melihat daftar user yang diikuti |
+| `GET`    | `/api/users/:id/followers`          | Melihat daftar followers |
+
 
 ---
 

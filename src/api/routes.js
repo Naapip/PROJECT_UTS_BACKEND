@@ -2,6 +2,7 @@ const express = require('express');
 const users = require('./components/users/users-route');
 const threads = require('./components/threads/threads-route');
 const replies = require('./components/replies/replies-route');
+const search  = require('./components/search/search-route');
 
 module.exports = () => {
   const app = express.Router();
@@ -9,6 +10,6 @@ module.exports = () => {
   users(app);
   threads(app);
   replies(app);
-
+  search(app);
   return app;
 };
