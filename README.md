@@ -31,6 +31,13 @@
 * **Fitur Social Graph**: Fitur untuk menampilkan siapa saja yang diikuti oleh user tertentu.
 * **Fitur Social Graph2**: Fitur untuk menampilkan daftar pengikut.
 
+### 5. Muhammad Farouq Dhiaulhaq (Activity System)
+**Endpoint Prefix:** `/api/activity`
+* **Fitur Interaksi**: Fitur untuk merekam interaksi pengguna terhadap sebuah thread.
+* **Fitur Histori**: Fitur untuk mengambil daftar seluruh aktivitas yang dilakukan oleh user maupun aktivitas yang menargetkan user tersebut.
+* **Fitur Statistik Thread**: Fitur publik untuk menampilkan riwayat interaksi spesifik pada sebuah thread tertentu.
+* **Fitur Pembatalan Interaksi**: Fitur untuk menghapus rekaman aktivitas di dalam database berdasarkan ID aktivitasnya.
+
 ---
 
 ## 🛠️ Detail Endpoint API
@@ -70,6 +77,14 @@
 | `GET`    | `/api/search/threads?q=`            | Mencari thread berdasarkan kata kunci |
 | `GET`    | `/api/users/:id/following`          | Melihat daftar user yang diikuti |
 | `GET`    | `/api/users/:id/followers`          | Melihat daftar followers |
+
+### Activity-like, repost & follow (Farouq)
+| Method   | Endpoint                            | Deskripsi |
+| :---     | :---                                | :--- |
+| `POST`   | `/api/activity`                     | Membuat Activity   |
+| `GET`    | `/api/activity`                     | Mencari User Activity   |
+| `GET`    | `/api/activity/thread/:id`          | Melihat interaksi pada sebuah threads |
+| `DELETE` | `/api/activity/:id`                 | Melakukan Unlike, Unrepost & Unfollow|
 
 
 ---
